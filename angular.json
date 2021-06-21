@@ -12,7 +12,6 @@
           "inlineTemplate": true,
           "changeDetection": "OnPush",
           "viewEncapsulation": "None",
-          "lintFix": true,
           "prefix": "app",
           "skipTests": true
         },
@@ -105,6 +104,58 @@
             "lintFilePatterns": [
               "src/**/*.ts",
               "src/**/*.html"
+            ]
+          }
+        }
+      }
+    },
+    "ngx-orgchart": {
+      "projectType": "library",
+      "root": "projects/ngx-orgchart",
+      "sourceRoot": "projects/ngx-orgchart/src",
+      "prefix": "ngx",
+      "schematics": {
+        "@schematics/angular:component": {
+          "style": "scss",
+          "inlineStyle": true,
+          "inlineTemplate": true,
+          "changeDetection": "OnPush",
+          "viewEncapsulation": "None",
+          "prefix": "app",
+          "skipTests": true
+        },
+        "@schematics/angular:service": {
+          "skipTests": true
+        },
+        "@schematics/angular:directive": {
+          "skipTests": true
+        },
+        "@schematics/angular:application": {
+          "strict": true
+        }
+      },
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:ng-packagr",
+          "options": {
+            "project": "projects/ngx-orgchart/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "projects/ngx-orgchart/tsconfig.lib.prod.json"
+            },
+            "development": {
+              "tsConfig": "projects/ngx-orgchart/tsconfig.lib.json"
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "lint": {
+          "builder": "@angular-eslint/builder:lint",
+          "options": {
+            "lintFilePatterns": [
+              "projects/ngx-orgchart/**/*.ts",
+              "projects/ngx-orgchart/**/*.html"
             ]
           }
         }

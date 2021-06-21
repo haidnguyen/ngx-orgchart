@@ -11,6 +11,12 @@
     "declaration": false,
     "downlevelIteration": true,
     "experimentalDecorators": true,
+    "paths": {
+      "ngx-orgchart": [
+        "dist/ngx-orgchart/ngx-orgchart",
+        "dist/ngx-orgchart"
+      ]
+    },
     "moduleResolution": "node",
     "importHelpers": true,
     "target": "es2017",

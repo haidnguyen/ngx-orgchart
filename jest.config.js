@@ -12,5 +12,4 @@ module.exports = {
   ],
   transformIgnorePatterns: ['^.+\\.js$'],
   moduleNameMapper: pathsToModuleNameMapper(compilerOptions.paths ?? {}, { prefix: '<rootDir>/' }),
-  snapshotResolver: './snapshotResolver.js',
 }
