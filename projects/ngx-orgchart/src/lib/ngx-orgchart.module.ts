@@ -2,16 +2,11 @@ import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 
 import { NgxOrgchartComponent } from './ngx-orgchart.component';
+import { NodeComponent } from './node.component';
 
 @NgModule({
-  declarations: [
-    NgxOrgchartComponent
-  ],
-  imports: [
-    CommonModule,
-  ],
-  exports: [
-    NgxOrgchartComponent
-  ]
+  declarations: [NgxOrgchartComponent, NodeComponent],
+  imports: [CommonModule],
+  exports: [NgxOrgchartComponent],
 })
-export class NgxOrgchartModule { }
+export class NgxOrgchartModule {}
