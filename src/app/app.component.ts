@@ -12,8 +12,10 @@ interface Meta {
 @Component({
   selector: 'app-root',
   template: `
-    <div>App</div>
-    <ngx-orgchart [datasource]="datasource"></ngx-orgchart>
+    <ngx-orgchart [datasource]="datasource" [nodeTemplateRef]="nodeTpl"></ngx-orgchart>
+    <ng-template #nodeTpl let-data let-meta="meta">
+      <div>{{ data.name }}</div>
+    </ng-template>
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })

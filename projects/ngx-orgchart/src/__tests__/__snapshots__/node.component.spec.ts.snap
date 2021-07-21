@@ -1,0 +1,25 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`NodeComponent should match snapshot 1`] = `
+<div
+  id="root0"
+>
+  
+  <div
+    class="ngx-node-container"
+  >
+    
+    <div
+      class="ngx-node-children"
+    >
+      
+      <div>
+         2 
+      </div>
+      <div>
+         3 
+      </div>
+    </div>
+  </div>
+</div>
+`;

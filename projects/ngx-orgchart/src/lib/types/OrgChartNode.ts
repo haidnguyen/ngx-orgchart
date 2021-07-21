@@ -1,4 +1,3 @@
-
 export interface OrgChartNode<T, K = any> {
   id: string;
   parentId: string | null;

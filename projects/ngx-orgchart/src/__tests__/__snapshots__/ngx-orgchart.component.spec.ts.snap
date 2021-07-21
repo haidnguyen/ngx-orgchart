@@ -5,14 +5,5 @@ exports[`NgxOrgchartComponent should match snapshot 1`] = `
   id="root0"
 >
   
-  <div>
-     [] 
-  </div>
-  <div>
-      
-  </div>
-  <div>
-     [] 
-  </div>
 </div>
 `;
