@@ -13,12 +13,45 @@ exports[`NodeComponent should match snapshot 1`] = `
       class="ngx-node-children"
     >
       
-      <div>
-         2 
-      </div>
-      <div>
-         3 
-      </div>
+      <ngx-node>
+        
+        <div
+          class="ngx-node-container"
+        >
+          
+          <div
+            class="ngx-node-children"
+          >
+            
+            <ngx-node>
+              
+              <div
+                class="ngx-node-container"
+              >
+                
+                <div
+                  class="ngx-node-children"
+                >
+                  
+                </div>
+              </div>
+            </ngx-node>
+          </div>
+        </div>
+      </ngx-node>
+      <ngx-node>
+        
+        <div
+          class="ngx-node-container"
+        >
+          
+          <div
+            class="ngx-node-children"
+          >
+            
+          </div>
+        </div>
+      </ngx-node>
     </div>
   </div>
 </div>

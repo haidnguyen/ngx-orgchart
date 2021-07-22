@@ -1,5 +1,6 @@
 import { ChangeDetectionStrategy, Component, Input, TemplateRef, ViewEncapsulation } from '@angular/core';
-import { Observable } from 'rxjs';
+import { ReplaySubject } from 'rxjs';
+import { switchMap } from 'rxjs/operators';
 
 import { NodeStore } from './node.store';
 import { OrgChartNode } from './types';
@@ -12,9 +13,7 @@ import { OrgChartNode } from './types';
         {{ vm.node | json }}
       </ng-container>
       <div class="ngx-node-children">
-        <div *ngFor="let id of vm.childIds">
-          {{ id }}
-        </div>
+        <ngx-node *ngFor="let id of vm.childIds" [nodeId]="id" [nodeTemplateRef]="nodeTemplateRef"></ngx-node>
       </div>
     </div>
   `,
@@ -36,17 +35,18 @@ export class NodeComponent<T, K> {
   @Input() nodeTemplateRef!: TemplateRef<T>;
   @Input()
   set nodeId(id: OrgChartNode<T, K>['id']) {
-    this.vm$ = this.fromNodeStore.select(
-      this.fromNodeStore.selectNodeById(id),
-      this.fromNodeStore.selectChildrenIds(id),
-      (node, childIds) => ({ node, childIds })
-    );
+    this.$nodeId.next(id);
   }
-
-  vm$!: Observable<{
-    node: OrgChartNode<T, K>;
-    childIds: string[];
-  }>;
+  private readonly $nodeId = new ReplaySubject<OrgChartNode<T, K>['id']>(1);
+  vm$ = this.$nodeId.pipe(
+    switchMap(id =>
+      this.fromNodeStore.select(
+        this.fromNodeStore.selectNodeById(id),
+        this.fromNodeStore.selectChildrenIds(id),
+        (node, childIds) => ({ node, childIds })
+      )
+    )
+  );
 
   constructor(private readonly fromNodeStore: NodeStore<T, K>) {}
 }
