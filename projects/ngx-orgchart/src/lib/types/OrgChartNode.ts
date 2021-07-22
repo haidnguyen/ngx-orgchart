@@ -1,4 +1,4 @@
-export interface OrgChartNode<T, K = any> {
+export interface OrgChartNode<T = unknown, K = any> {
   id: string;
   parentId: string | null;
   meta?: K;

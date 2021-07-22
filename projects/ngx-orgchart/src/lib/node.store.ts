@@ -4,13 +4,13 @@ import update from 'immutability-helper';
 
 import { Entities, OrgChartNode } from './types';
 
-interface NodeState<T, K> {
+export interface NodeState<T, K> {
   entities: Entities<OrgChartNode<T, K>>;
   ids: string[];
 }
 
 @Injectable()
-export class NodeStore<T, K> extends ComponentStore<NodeState<T, K>> {
+export class NodeStore<T = any, K = any> extends ComponentStore<NodeState<T, K>> {
   constructor() {
     super({ entities: {}, ids: [] });
   }
