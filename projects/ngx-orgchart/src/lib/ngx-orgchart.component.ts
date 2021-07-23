@@ -6,7 +6,11 @@ import { Entities, OrgChartNode } from './types';
 @Component({
   selector: 'ngx-orgchart',
   template: `
-    <ngx-node *ngFor="let id of rootIds$ | async" [nodeId]="id" [nodeTemplateRef]="nodeTemplateRef"></ngx-node>
+    <ng-container *ngIf="vm$ | async as vm">
+      <div [ngStyle]="{ 'width.px': vm.chartWidth }">
+        <ngx-node *ngFor="let id of vm.rootIds" [nodeId]="id" [nodeTemplateRef]="nodeTemplateRef"></ngx-node>
+      </div>
+    </ng-container>
   `,
   styles: [],
   changeDetection: ChangeDetectionStrategy.OnPush,
@@ -21,7 +25,11 @@ export class NgxOrgchartComponent<T, K> {
 
   @Input() nodeTemplateRef!: TemplateRef<T>;
 
-  constructor(private readonly fromNodeStore: NodeStore<T, K>) {}
+  readonly vm$ = this.fromNodeStore.select(
+    this.fromNodeStore.rootIds$,
+    this.fromNodeStore.chartWidth$,
+    (rootIds, chartWidth) => ({ rootIds, chartWidth })
+  );
 
-  readonly rootIds$ = this.fromNodeStore.rootIds$;
+  constructor(private readonly fromNodeStore: NodeStore<T, K>) {}
 }

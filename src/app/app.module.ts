@@ -6,7 +6,13 @@ import { AppComponent } from './app.component';
 
 @NgModule({
   declarations: [AppComponent],
-  imports: [BrowserModule, NgxOrgchartModule],
+  imports: [
+    BrowserModule,
+    NgxOrgchartModule.withConfig({
+      nodeWidth: 300,
+      nodeHeight: 120,
+    }),
+  ],
   providers: [],
   bootstrap: [AppComponent],
 })

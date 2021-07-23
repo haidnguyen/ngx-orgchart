@@ -6,9 +6,10 @@
     "build": "NODE_ENV=production ng build",
     "test": "jest",
     "test:coverage": "jest --coverage",
-    "lint": "eslint src",
+    "lint": "eslint src projects/**",
     "commit": "commit",
-    "dev:ngx-orgchart": "ng build ngx-orgchart --watch"
+    "dev:ngx-orgchart": "ng build ngx-orgchart --watch",
+    "build:ngx-orgchart": "NODE_ENV=production ng build ngx-orgchart"
   },
   "private": true,
   "dependencies": {

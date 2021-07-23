@@ -2,6 +2,7 @@
 
 exports[`NodeComponent should match snapshot 1`] = `
 <div
+  class="ngx-node-root"
   id="root0"
 >
   
@@ -13,7 +14,9 @@ exports[`NodeComponent should match snapshot 1`] = `
       class="ngx-node-children"
     >
       
-      <ngx-node>
+      <ngx-node
+        class="ngx-node-root"
+      >
         
         <div
           class="ngx-node-container"
@@ -23,7 +26,9 @@ exports[`NodeComponent should match snapshot 1`] = `
             class="ngx-node-children"
           >
             
-            <ngx-node>
+            <ngx-node
+              class="ngx-node-root"
+            >
               
               <div
                 class="ngx-node-container"
@@ -39,7 +44,9 @@ exports[`NodeComponent should match snapshot 1`] = `
           </div>
         </div>
       </ngx-node>
-      <ngx-node>
+      <ngx-node
+        class="ngx-node-root"
+      >
         
         <div
           class="ngx-node-container"

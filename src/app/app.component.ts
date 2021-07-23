@@ -14,9 +14,22 @@ interface Meta {
   template: `
     <ngx-orgchart [datasource]="datasource" [nodeTemplateRef]="nodeTpl"></ngx-orgchart>
     <ng-template #nodeTpl let-data let-meta="meta">
-      <div>{{ data.name }}</div>
+      <div class="chart-node">
+        <span>{{ data.name }}</span>
+      </div>
     </ng-template>
   `,
+  styles: [
+    `
+      .chart-node {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 300px;
+        height: 120px;
+      }
+    `,
+  ],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class AppComponent {

@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, Input, TemplateRef, ViewEncapsulation } from '@angular/core';
+import { ChangeDetectionStrategy, Component, HostBinding, Input, TemplateRef, ViewEncapsulation } from '@angular/core';
 import { ReplaySubject } from 'rxjs';
 import { switchMap } from 'rxjs/operators';
 
@@ -19,12 +19,17 @@ import { OrgChartNode } from './types';
   `,
   styles: [
     `
+      .ngx-node-root {
+        height: fit-content;
+      }
       .ngx-node-container {
         display: flex;
         flex-direction: column;
+        align-items: center;
       }
       .ngx-node-children {
         display: flex;
+        justify-content: center;
       }
     `,
   ],
@@ -32,11 +37,14 @@ import { OrgChartNode } from './types';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class NodeComponent<T, K> {
+  @HostBinding('class') className = 'ngx-node-root';
+
   @Input() nodeTemplateRef!: TemplateRef<T>;
   @Input()
   set nodeId(id: OrgChartNode<T, K>['id']) {
     this.$nodeId.next(id);
   }
+
   private readonly $nodeId = new ReplaySubject<OrgChartNode<T, K>['id']>(1);
   vm$ = this.$nodeId.pipe(
     switchMap(id =>
